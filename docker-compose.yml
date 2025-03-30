@@ -1,0 +1,58 @@
+version: '3.8'
+services:
+  postgres_db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres_ZTBD
+    ports:
+      - '5433:5432'
+    volumes:
+      - postgres_db:/var/lib/postgresql/data
+
+  mysql_db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysql
+      - MYSQL_DATABASE=mysql_ZTBD
+    ports:
+      - '3307:3306'
+    volumes:
+      - mysql_db:/var/lib/mysql
+    
+  mongo6_db:
+    image: mongo:6.0
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongo
+      - MONGO_INITDB_ROOT_PASSWORD=mongo
+    volumes:
+      - mongo6_db:/data/db
+
+  mongo8_db:
+    image: mongo:8.0
+    restart: always
+    ports:
+      - "27018:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongo
+      - MONGO_INITDB_ROOT_PASSWORD=mongo
+    volumes:
+      - mongo8_db:/data/db
+
+
+
+volumes:
+  postgres_db:
+    driver: local
+  mysql_db:
+    driver: local
+  mongo6_db:
+    driver: local
+  mongo8_db:
+    driver: local
