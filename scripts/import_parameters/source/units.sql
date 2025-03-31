@@ -1,0 +1,9 @@
+INSERT INTO public.units (id, name, symbol) VALUES ('873c12ae-9b08-46ab-8957-8363552895dd', 'Kilogram', 'kg');
+INSERT INTO public.units (id, name, symbol) VALUES ('95c8e4d6-5afd-4735-bcb3-7edec4dda14f', 'Godzina', 'h');
+INSERT INTO public.units (id, name, symbol) VALUES ('699a4923-a534-44e6-82d8-d8be8226777e', 'BPM', 'bpm');
+INSERT INTO public.units (id, name, symbol) VALUES ('562634fe-8ee2-40b4-8938-cbca5d486666', 'mg/dL', 'mg/dL');
+INSERT INTO public.units (id, name, symbol) VALUES ('1704f6f9-0868-45f1-b98d-a7d28ea7dbad', 'mmHg', 'mmHg');
+INSERT INTO public.units (id, name, symbol) VALUES ('1e7dd989-cde2-474c-9ce2-f5712d99624f', 'Percent', '%');
+INSERT INTO public.units (id, name, symbol) VALUES ('ded85aac-6579-47a8-9f5b-a8078f410fff', 'ml', 'ml');
+INSERT INTO public.units (id, name, symbol) VALUES ('4249a105-dcb7-44b5-ad34-b37fef0fadbb', 'Kroki', 'kroki');
+INSERT INTO public.units (id, name, symbol) VALUES ('2872206b-6d84-4723-bd19-a7a50a0d7521', 'Poziom', 'poziom');

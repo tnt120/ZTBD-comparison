@@ -1,0 +1,47 @@
+[
+    {
+        "_id": "873c12ae-9b08-46ab-8957-8363552895dd",
+        "name": "Kilogram",
+        "symbol": "kg"
+    },
+    {
+        "_id": "95c8e4d6-5afd-4735-bcb3-7edec4dda14f",
+        "name": "Godzina",
+        "symbol": "h"
+    },
+    {
+        "_id": "699a4923-a534-44e6-82d8-d8be8226777e",
+        "name": "BPM",
+        "symbol": "bpm"
+    },
+    {
+        "_id": "562634fe-8ee2-40b4-8938-cbca5d486666",
+        "name": "mg/dL",
+        "symbol": "mg/dL"
+    },
+    {
+        "_id": "1704f6f9-0868-45f1-b98d-a7d28ea7dbad",
+        "name": "mmHg",
+        "symbol": "mmHg"
+    },
+    {
+        "_id": "1e7dd989-cde2-474c-9ce2-f5712d99624f",
+        "name": "Percent",
+        "symbol": "%"
+    },
+    {
+        "_id": "ded85aac-6579-47a8-9f5b-a8078f410fff",
+        "name": "ml",
+        "symbol": "ml"
+    },
+    {
+        "_id": "4249a105-dcb7-44b5-ad34-b37fef0fadbb",
+        "name": "Kroki",
+        "symbol": "kroki"
+    },
+    {
+        "_id": "2872206b-6d84-4723-bd19-a7a50a0d7521",
+        "name": "Poziom",
+        "symbol": "poziom"
+    }
+]

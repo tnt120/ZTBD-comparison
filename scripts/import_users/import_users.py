@@ -29,6 +29,7 @@ if __name__ == "__main__":
         import_mongo_users(
             MONGO6_HOST, MONGO6_PORT, MONGO6_USER, MONGO6_PASSWORD, MONGO6_DB
         )
+        print_colored("[Mongo 6] Users loaded successfully.", "GREEN")
     except:
         print_colored("Failed loading mongo 6", "RED")
 
@@ -37,5 +38,6 @@ if __name__ == "__main__":
         import_mongo_users(
             MONGO8_HOST, MONGO8_PORT, MONGO8_USER, MONGO8_PASSWORD, MONGO8_DB
         )
+        print_colored("[Mongo 8] Users loaded successfully.", "GREEN")
     except:
         print_colored("Failed loading mongo 8", "RED")

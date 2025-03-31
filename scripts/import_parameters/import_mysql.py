@@ -1,0 +1,42 @@
+import mysql.connector
+import sys
+import os
+import re
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from env import MYSQL_HOST, MYSQL_PORT, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DB
+from utils import print_colored
+
+
+def load_mysql(input_file, table_name):
+    conn = mysql.connector.connect(
+        host=MYSQL_HOST,
+        user=MYSQL_USER,
+        password=MYSQL_PASSWORD,
+        database=MYSQL_DB,
+        port=MYSQL_PORT,
+    )
+    cursor = conn.cursor()
+
+    with open(input_file, "r", encoding="utf-8") as file:
+        for line in file:
+            line = line.strip()
+            if not line or not line.lower().startswith("insert"):
+                continue
+
+            line = re.sub(
+                r"INSERT INTO\s+public\.", "INSERT INTO ", line, flags=re.IGNORECASE
+            )
+            cursor.execute(line)
+
+    conn.commit()
+
+    print_colored(F"[MySQL] {table_name} loaded successfully.", "GREEN")
+
+    cursor.close()
+
+
+if __name__ == "__main__":
+    load_mysql("source/units.sql", "Units")
+    load_mysql("source/parameters.sql", "Parameters")

@@ -1,0 +1,92 @@
+[
+    {
+        "_id": "7b2c8f04-7948-468a-8982-d00d3adf1438",
+        "hint": "Podana w procentach",
+        "max_standard_value": 100,
+        "max_value": 100,
+        "min_standard_value": 95,
+        "min_value": 0,
+        "name": "Saturacja",
+        "unit_id": "1e7dd989-cde2-474c-9ce2-f5712d99624f"
+    },
+    {
+        "_id": "39828a6f-33ca-4740-a632-e9fd9c44fa9d",
+        "hint": "Podana w kg",
+        "max_standard_value": 24.99,
+        "max_value": 400,
+        "min_standard_value": 18.5,
+        "min_value": 1,
+        "name": "Waga",
+        "unit_id": "873c12ae-9b08-46ab-8957-8363552895dd"
+    },
+    {
+        "_id": "8e98f48c-a626-4415-81e1-f7c9525402d0",
+        "hint": "W godzinach snu",
+        "max_standard_value": 9,
+        "max_value": 48,
+        "min_standard_value": 7,
+        "min_value": 1,
+        "name": "Sen",
+        "unit_id": "95c8e4d6-5afd-4735-bcb3-7edec4dda14f"
+    },
+    {
+        "_id": "84083264-3aa9-4708-b069-f041424b0cc6",
+        "hint": "Podana w ml",
+        "max_standard_value": 8000,
+        "max_value": 10000,
+        "min_standard_value": 2000,
+        "min_value": 0,
+        "name": "Spożycie wody",
+        "unit_id": "ded85aac-6579-47a8-9f5b-a8078f410fff"
+    },
+    {
+        "_id": "d9b8dae2-51e4-4950-bbff-ccc9560d20e2",
+        "hint": "Podana w mg/dL",
+        "max_standard_value": 140,
+        "max_value": 1000,
+        "min_standard_value": 70,
+        "min_value": 0,
+        "name": "Poziom cukru we krwi",
+        "unit_id": "562634fe-8ee2-40b4-8938-cbca5d486666"
+    },
+    {
+        "_id": "fb5e14e5-05b4-4d19-a346-4d4a863acb24",
+        "hint": "BPM - uderzenia na minutę",
+        "max_standard_value": 100,
+        "max_value": 200,
+        "min_standard_value": 60,
+        "min_value": 30,
+        "name": "Tętno",
+        "unit_id": "699a4923-a534-44e6-82d8-d8be8226777e"
+    },
+    {
+        "_id": "a60b4d2b-d821-4aa2-a36a-24353ceb5415",
+        "hint": "Poziom stresu w skali od 1 do 10",
+        "max_standard_value": 4,
+        "max_value": 10,
+        "min_standard_value": 1,
+        "min_value": 1,
+        "name": "Poziom stresu",
+        "unit_id": "2872206b-6d84-4723-bd19-a7a50a0d7521"
+    },
+    {
+        "_id": "1207a823-201f-4304-a75e-943dfed49b14",
+        "hint": "test",
+        "max_standard_value": 20,
+        "max_value": 50,
+        "min_standard_value": 10,
+        "min_value": 0,
+        "name": "testabbb",
+        "unit_id": "873c12ae-9b08-46ab-8957-8363552895dd"
+    },
+    {
+        "_id": "e2eaf170-dd31-41eb-816f-9b3c229a8773",
+        "hint": "Liczba kroków",
+        "max_standard_value": 30000,
+        "max_value": 30000,
+        "min_standard_value": 5000,
+        "min_value": 0,
+        "name": "Kroki",
+        "unit_id": "4249a105-dcb7-44b5-ad34-b37fef0fadbb"
+    }
+]
