@@ -1,0 +1,369 @@
+[
+	{
+		"createCollection": "users",
+		"validator": {
+			"$jsonSchema": {
+				"bsonType": "object",
+				"required": [
+					"_id",
+					"email",
+					"name",
+					"surname",
+					"password",
+					"birth_date",
+					"creation_date",
+					"sex"
+				],
+				"properties": {
+					"_id": {
+						"bsonType": "string"
+					},
+					"email": {
+						"bsonType": "string"
+					},
+					"name": {
+						"bsonType": "string"
+					},
+					"surname": {
+						"bsonType": "string"
+					},
+					"password": {
+						"bsonType": "string"
+					},
+					"birth_date": {
+						"bsonType": "date"
+					},
+					"creation_date": {
+						"bsonType": "date"
+					},
+					"sex": {
+						"bsonType": "string",
+						"enum": [
+							"MALE",
+							"FEMALE",
+							"OTHER"
+						]
+					},
+					"user_drugs": {
+						"bsonType": "array",
+						"items": {
+							"bsonType": "object",
+							"required": [
+								"drug_id",
+								"amount",
+								"dose_size",
+								"start_date",
+								"end_date",
+								"priority"
+							],
+							"properties": {
+								"drug_id": {
+									"bsonType": "int"
+								},
+								"amount": {
+									"bsonType": "int"
+								},
+								"dose_size": {
+									"bsonType": "int"
+								},
+								"start_date": {
+									"bsonType": "date"
+								},
+								"end_date": {
+									"bsonType": "date"
+								},
+								"priority": {
+									"bsonType": "string",
+									"enum": [
+										"LOW",
+										"HIGH"
+									]
+								},
+								"drug_dose_day": {
+									"bsonType": "array",
+									"items": {
+										"bsonType": "string",
+										"enum": [
+											"MONDAY",
+											"TUESDAY",
+											"WEDNESDAY",
+											"THURSDAY",
+											"FRIDAY",
+											"SATURDAY",
+											"SUNDAY"
+										]
+									}
+								},
+								"drug_dose_time": {
+									"bsonType": "array",
+									"items": {
+										"bsonType": "string"
+									}
+								}
+							}
+						}
+					},
+					"parameters_logs": {
+						"bsonType": "array",
+						"items": {
+							"bsonType": "object",
+							"required": [
+								"parameter_id",
+								"value",
+								"created_at"
+							],
+							"properties": {
+								"parameter_id": {
+									"bsonType": "string"
+								},
+								"value": {
+									"bsonType": [
+										"double",
+										"int"
+									]
+								},
+								"created_at": {
+									"bsonType": "date"
+								}
+							}
+						}
+					},
+					"drugs_logs": {
+						"bsonType": "array",
+						"items": {
+							"bsonType": "object",
+							"required": [
+								"drug_id",
+								"created_at",
+								"day",
+								"time",
+								"taken_time"
+							],
+							"properties": {
+								"drug_id": {
+									"bsonType": "int"
+								},
+								"created_at": {
+									"bsonType": "date"
+								},
+								"day": {
+									"bsonType": "string",
+									"enum": [
+										"MONDAY",
+										"TUESDAY",
+										"WEDNESDAY",
+										"THURSDAY",
+										"FRIDAY",
+										"SATURDAY",
+										"SUNDAY"
+									]
+								},
+								"time": {
+									"bsonType": "string"
+								},
+								"taken_time": {
+									"bsonType": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	{
+		"createCollection": "parameters",
+		"validator": {
+			"$jsonSchema": {
+				"bsonType": "object",
+				"required": [
+					"_id",
+					"name",
+					"unit_id"
+				],
+				"properties": {
+					"_id": {
+						"bsonType": "string"
+					},
+					"name": {
+						"bsonType": "string"
+					},
+					"hint": {
+						"bsonType": "string"
+					},
+					"min_value": {
+						"bsonType": [
+							"double",
+							"int"
+						]
+					},
+					"max_value": {
+						"bsonType": [
+							"double",
+							"int"
+						]
+					},
+					"min_standard_value": {
+						"bsonType": [
+							"double",
+							"int"
+						]
+					},
+					"max_standard_value": {
+						"bsonType": [
+							"double",
+							"int"
+						]
+					},
+					"unit_id": {
+						"bsonType": "string"
+					}
+				}
+			}
+		}
+	},
+	{
+		"createCollection": "units",
+		"validator": {
+			"$jsonSchema": {
+				"bsonType": "object",
+				"required": [
+					"_id",
+					"name",
+					"symbol"
+				],
+				"properties": {
+					"_id": {
+						"bsonType": "string"
+					},
+					"name": {
+						"bsonType": "string"
+					},
+					"symbol": {
+						"bsonType": "string"
+					}
+				}
+			}
+		}
+	},
+	{
+		"createCollection": "drugs",
+		"validator": {
+			"$jsonSchema": {
+				"bsonType": "object",
+				"required": [
+					"_id"
+				],
+				"properties": {
+					"_id": {
+						"bsonType": "int"
+					},
+					"atc_codes": {
+						"bsonType": [
+							"string",
+							"null"
+						]
+					},
+					"characteristic": {
+						"bsonType": [
+							"string",
+							"null"
+						]
+					},
+					"company": {
+						"bsonType": [
+							"string",
+							"null"
+						]
+					},
+					"info": {
+						"bsonType": [
+							"string",
+							"null"
+						]
+					},
+					"name": {
+						"bsonType": [
+							"string",
+							"null"
+						]
+					},
+					"permit_expiration": {
+						"bsonType": [
+							"string",
+							"null"
+						]
+					},
+					"permit_number": {
+						"bsonType": [
+							"string",
+							"null"
+						]
+					},
+					"pharmaceutical_form_name": {
+						"bsonType": [
+							"string",
+							"null"
+						]
+					},
+					"power": {
+						"bsonType": [
+							"string",
+							"null"
+						]
+					},
+					"procedure_type": {
+						"bsonType": [
+							"string",
+							"null"
+						]
+					},
+					"drug_packs": {
+						"bsonType": "array",
+						"items": {
+							"bsonType": "object",
+							"properties": {
+								"gtin_code": {
+									"bsonType": [
+										"string",
+										"null"
+									]
+								},
+								"pack_size": {
+									"bsonType": [
+										"string",
+										"null"
+									]
+								},
+								"pack_type": {
+									"bsonType": [
+										"string",
+										"null"
+									]
+								},
+								"pack_unit": {
+									"bsonType": [
+										"string",
+										"null"
+									]
+								},
+								"packages_quantity": {
+									"bsonType": [
+										"string",
+										"null"
+									]
+								},
+								"accessibility_category": {
+									"bsonType": [
+										"string",
+										"null"
+									]
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+]
