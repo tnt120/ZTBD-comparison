@@ -6,7 +6,7 @@ import sys
 import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
-from utils import print_colored
+from common.utils import print_colored
 
 DRUGS_INPUT_FILE = "drugs.sql"
 DRUG_PACKS_INPUT_FILE = "drug_packs.sql"

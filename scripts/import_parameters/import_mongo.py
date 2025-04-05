@@ -18,7 +18,8 @@ def parse_args():
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from env import MONGO6_HOST, MONGO6_PORT, MONGO6_USER, MONGO6_PASSWORD, MONGO6_DB
 from env import MONGO8_HOST, MONGO8_PORT, MONGO8_USER, MONGO8_PASSWORD, MONGO8_DB
-from utils import print_colored
+from common.utils import print_colored
+
 
 def import_mongo(host, port, user, password, db, input_file, collection):
     client = pymongo.MongoClient(host, port=int(port), username=user, password=password)
@@ -35,30 +36,65 @@ def import_mongo(host, port, user, password, db, input_file, collection):
 if __name__ == "__main__":
     args = parse_args()
 
+    units_file_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "source/units.json"
+    )
+    parameters_file_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "source/parameters.json"
+    )
+
     if args.target == "all" or args.target == "mongo6":
         try:
             import_mongo(
-                MONGO6_HOST, MONGO6_PORT, MONGO6_USER, MONGO6_PASSWORD, MONGO6_DB, "source/units.json", "units"
+                MONGO6_HOST,
+                MONGO6_PORT,
+                MONGO6_USER,
+                MONGO6_PASSWORD,
+                MONGO6_DB,
+                units_file_path,
+                "units",
             )
-            
+
             print_colored(f"Units loaded into MongoDB 6 successfully.", "GREEN")
             import_mongo(
-                MONGO6_HOST, MONGO6_PORT, MONGO6_USER, MONGO6_PASSWORD, MONGO6_DB, "source/parameters.json", "parameters"
+                MONGO6_HOST,
+                MONGO6_PORT,
+                MONGO6_USER,
+                MONGO6_PASSWORD,
+                MONGO6_DB,
+                parameters_file_path,
+                "parameters",
             )
             print_colored(f"Units loaded into MongoDB 6 successfully.", "GREEN")
         except Exception as ex:
-            print_colored(f"Failed to import parameters or logs in mongo 6. {ex}", "RED")
+            print_colored(
+                f"Failed to import parameters or logs in mongo 6. {ex}", "RED"
+            )
 
     if args.target == "all" or args.target == "mongo8":
         try:
             import_mongo(
-                MONGO8_HOST, MONGO8_PORT, MONGO8_USER, MONGO8_PASSWORD, MONGO8_DB, "source/units.json", "units"
+                MONGO8_HOST,
+                MONGO8_PORT,
+                MONGO8_USER,
+                MONGO8_PASSWORD,
+                MONGO8_DB,
+                units_file_path,
+                "units",
             )
-            
+
             print_colored(f"Units loaded into MongoDB 8 successfully.", "GREEN")
             import_mongo(
-                MONGO8_HOST, MONGO8_PORT, MONGO8_USER, MONGO8_PASSWORD, MONGO8_DB, "source/parameters.json", "parameters"
+                MONGO8_HOST,
+                MONGO8_PORT,
+                MONGO8_USER,
+                MONGO8_PASSWORD,
+                MONGO8_DB,
+                parameters_file_path,
+                "parameters",
             )
             print_colored(f"Units loaded into MongoDB 8 successfully.", "GREEN")
         except Exception as ex:
-            print_colored(f"Failed to import parameters or logs in mongo 8. {ex}", "RED")
+            print_colored(
+                f"Failed to import parameters or logs in mongo 8. {ex}", "RED"
+            )

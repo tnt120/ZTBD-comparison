@@ -19,9 +19,12 @@ def parse_args():
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from env import MONGO6_HOST, MONGO6_PORT, MONGO6_USER, MONGO6_PASSWORD, MONGO6_DB
 from env import MONGO8_HOST, MONGO8_PORT, MONGO8_USER, MONGO8_PASSWORD, MONGO8_DB
-from utils import print_colored
+from common.utils import print_colored
 
-INPUT_FILE = "source/users.json"
+
+INPUT_FILE = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "source/users.json"
+)
 TARGET_COLLECTION = "users"
 
 

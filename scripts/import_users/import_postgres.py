@@ -11,7 +11,7 @@ from env import (
     POSTGRES_PASSWORD,
     POSTGRES_DB,
 )
-from utils import print_colored
+from common.utils import print_colored
 
 
 def load_postgres_users():
@@ -24,7 +24,11 @@ def load_postgres_users():
     )
     cursor = conn.cursor()
 
-    with open("source/users.sql", "r", encoding="utf-8") as file:
+    file_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "source/users.sql"
+    )
+
+    with open(file_path, "r", encoding="utf-8") as file:
         sql = file.read()
 
     cursor.execute(sql)

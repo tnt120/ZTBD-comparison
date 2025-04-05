@@ -11,7 +11,7 @@ from env import (
     POSTGRES_PASSWORD,
     POSTGRES_DB,
 )
-from utils import print_colored
+from common.utils import print_colored
 
 
 def load_postgres(input_file, table_name):
@@ -29,7 +29,7 @@ def load_postgres(input_file, table_name):
 
     cursor.execute(sql)
 
-    print_colored(F"[Postgres] {table_name} loaded successfully.", "GREEN")
+    print_colored(f"[Postgres] {table_name} loaded successfully.", "GREEN")
 
     conn.commit()
     cursor.close()
@@ -37,5 +37,12 @@ def load_postgres(input_file, table_name):
 
 
 if __name__ == "__main__":
-    load_postgres("source/units.sql", "Units")
-    load_postgres("source/parameters.sql", "Parameters")
+    units_file_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "source/units.sql"
+    )
+    parameters_file_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "source/parameters.sql"
+    )
+
+    load_postgres(units_file_path, "Units")
+    load_postgres(parameters_file_path, "Parameters")

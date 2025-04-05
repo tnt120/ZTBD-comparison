@@ -6,7 +6,7 @@ import re
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from env import MYSQL_HOST, MYSQL_PORT, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DB
-from utils import print_colored
+from common.utils import print_colored
 
 
 def load_mysql_users():
@@ -19,7 +19,11 @@ def load_mysql_users():
     )
     cursor = conn.cursor()
 
-    with open("source/users.sql", "r", encoding="utf-8") as file:
+    file_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "source/users.sql"
+    )
+
+    with open(file_path, "r", encoding="utf-8") as file:
         for line in file:
             line = line.strip()
             if not line or not line.lower().startswith("insert"):

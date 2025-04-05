@@ -6,7 +6,7 @@ import re
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from env import MYSQL_HOST, MYSQL_PORT, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DB
-from utils import print_colored
+from common.utils import print_colored
 
 
 def load_mysql(input_file, table_name):
@@ -32,11 +32,18 @@ def load_mysql(input_file, table_name):
 
     conn.commit()
 
-    print_colored(F"[MySQL] {table_name} loaded successfully.", "GREEN")
+    print_colored(f"[MySQL] {table_name} loaded successfully.", "GREEN")
 
     cursor.close()
 
 
 if __name__ == "__main__":
-    load_mysql("source/units.sql", "Units")
-    load_mysql("source/parameters.sql", "Parameters")
+    units_file_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "source/units.sql"
+    )
+    parameters_file_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "source/parameters.sql"
+    )
+
+    load_mysql(units_file_path, "Units")
+    load_mysql(parameters_file_path, "Parameters")

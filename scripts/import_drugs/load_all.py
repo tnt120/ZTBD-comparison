@@ -11,10 +11,10 @@ from source.generate_drugs_json import generate_drugs_json
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from env import MONGO6_HOST, MONGO6_PORT, MONGO6_USER, MONGO6_PASSWORD, MONGO6_DB
 from env import MONGO8_HOST, MONGO8_PORT, MONGO8_USER, MONGO8_PASSWORD, MONGO8_DB
-from utils import print_colored
+from common.utils import print_colored
 
 
-if __name__ == "__main__":
+def load_drugs():
     print_colored("1. Loading drugs", "BLUE")
     try:
         load_postgres_drugs()
@@ -36,3 +36,7 @@ if __name__ == "__main__":
     print_colored("\n2. Loading drug packs: ", "BLUE")
     load_postgres_drug_packs()
     load_mysql_drug_packs()
+
+
+if __name__ == "__main__":
+    load_drugs()
