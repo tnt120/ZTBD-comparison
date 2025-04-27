@@ -2,38 +2,25 @@ from psycopg2 import sql
 
 
 def revert_deletion_postgres(connection, table_name, existing_records):
-    columns = existing_records[0].keys()  # Get column names from the first record
-    values = [
-        tuple(record.values()) for record in existing_records
-    ]  # Convert records to tuples
-    columns_sql = sql.SQL(", ").join(
-        map(sql.Identifier, columns)
-    )  # Format column names for SQL
+    columns = existing_records[0].keys()
+    values = [tuple(record.values()) for record in existing_records]
+    columns_sql = sql.SQL(", ").join(map(sql.Identifier, columns))
 
-    # Ensure the length of each value tuple matches the number of columns in the table
     try:
         with connection.cursor() as cursor:
-            # Create a query with placeholders for each value
             query = sql.SQL(
                 """
 				INSERT INTO {table_name} ({columns})
-				VALUES {values}
-				ON CONFLICT (id) DO NOTHING;  -- Make sure 'id' or another unique column is in conflict
+				VALUES ({placeholders})
+				ON CONFLICT (id) DO NOTHING;
 				"""
             ).format(
                 table_name=sql.Identifier(table_name),
                 columns=columns_sql,
-                values=sql.SQL(", ").join(
-                    [sql.SQL("(%s)")] * len(values[0])
-                ),  # Ensure placeholders are tuples for each record
+                placeholders=sql.SQL(", ").join(sql.Placeholder() for _ in columns),
             )
 
-            print(query)  # Print query for debugging
-
-            # Use executemany to execute the query with the values
-            cursor.executemany(
-                query, values
-            )  # Bind the correct values to the placeholders
+            cursor.executemany(query, values)
             connection.commit()
     except Exception as e:
         connection.rollback()

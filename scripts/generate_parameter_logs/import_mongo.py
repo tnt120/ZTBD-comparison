@@ -43,6 +43,7 @@ def get_mongo_operations(records):
         op = {
             "$push": {
                 "parameters_logs": {
+                    "_id": rec["id"],
                     "parameter_id": rec["parameter_id"],
                     "value": rec["value"],
                     "created_at": datetime.fromisoformat(rec["created_at"]),

@@ -5,12 +5,13 @@ from scripts.test_utils.delete_revert import (
 )
 
 
-param_id = "a2ed45cc-0538-45c3-a965-f7e21cfc867a"
+param_id = "d2b5904e-054f-4aa1-b823-09fd60f5a814"
 prev_parameter = None
+user_id = None
 
 
 def before(db, conn):
-    global prev_parameter
+    global prev_parameter, user_id
 
     if db in ["pg", "mysql"]:
         cursor = conn.cursor()
@@ -20,12 +21,22 @@ def before(db, conn):
         prev_parameter = dict(zip(columns, row))
     elif db in ["mongo6", "mongo8"]:
         collection = conn["users"]
-        param = collection.find_one({"parameters_logs.id": param_id})
-        prev_parameter = param
+        user = collection.find_one({"parameters_logs._id": param_id})
+        if user:
+            prev_parameter = next(
+                (
+                    log
+                    for log in user.get("parameters_logs", [])
+                    if log["_id"] == param_id
+                ),
+                None,
+            )
+            user_id = user["_id"]
+        else:
+            prev_parameter = None
 
 
 def execute(db, conn):
-    return
     if db in ["pg", "mysql"]:
         cursor = conn.cursor()
         query = """
@@ -52,5 +63,5 @@ def after(db, conn):
             "users",
             [prev_parameter],
             "parameters_logs",
-            prev_parameter["user_id"],
+            user_id,
         )
