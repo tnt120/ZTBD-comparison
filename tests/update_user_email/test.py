@@ -27,18 +27,18 @@ def before(db, conn):
 
 def execute(db, conn):
 
-    new_password = fake.password()
+    new_email = fake.email()
     if db in ["pg", "mysql"]:
         cursor = conn.cursor()
         cursor.execute(
-            "UPDATE users SET password = %s WHERE id = %s", (new_password, user_id)
+            "UPDATE users SET email = %s WHERE id = %s", (new_email, user_id)
         )
         conn.commit()
         cursor.close()
 
     elif db in ["mongo6", "mongo8"]:
         collection = conn["users"]
-        collection.update_one({"_id": user_id}, {"$set": {"password": new_password}})
+        collection.update_one({"_id": user_id}, {"$set": {"email": new_email}})
 
 
 def after(db, conn):
